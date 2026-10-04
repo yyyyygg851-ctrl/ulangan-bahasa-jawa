@@ -1,0 +1,2765 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#10001d">
+<title>ULANGAN BAHASA JAWA KELAS 6</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+:root{
+  --bg:#06000b;
+  --bg2:#12001f;
+  --panel:rgba(29,7,48,.9);
+  --purple:#9146ff;
+  --purple2:#c968ff;
+  --pink:#ef5cff;
+  --text:#fff;
+  --muted:#b9a5c8;
+  --border:rgba(187,91,255,.28);
+  --green:#49e69a;
+  --red:#ff527d;
+  --yellow:#ffd35c;
+}
+
+body{
+  min-height:100vh;
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  background:
+    radial-gradient(circle at 10% 5%,rgba(129,39,255,.25),transparent 28%),
+    radial-gradient(circle at 90% 85%,rgba(235,54,255,.17),transparent 30%),
+    linear-gradient(135deg,#040007,#11001c,#07000c);
+  overflow-x:hidden;
+}
+
+/* BACKGROUND */
+
+.bg-orb{
+  position:fixed;
+  width:280px;
+  height:280px;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:.2;
+  pointer-events:none;
+  z-index:0;
+  animation:orbFloat 9s ease-in-out infinite alternate;
+}
+
+.orb1{
+  top:-120px;
+  left:-120px;
+  background:#782cff;
+}
+
+.orb2{
+  right:-120px;
+  bottom:-120px;
+  background:#ec38ff;
+  animation-delay:2s;
+}
+
+.orb3{
+  width:170px;
+  height:170px;
+  left:45%;
+  top:45%;
+  background:#b642ff;
+  animation-delay:4s;
+}
+
+@keyframes orbFloat{
+  from{transform:translate(0,0) scale(1)}
+  to{transform:translate(50px,35px) scale(1.2)}
+}
+
+#particles{
+  position:fixed;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  overflow:hidden;
+}
+
+.particle{
+  position:absolute;
+  width:3px;
+  height:3px;
+  border-radius:50%;
+  background:#d08aff;
+  box-shadow:0 0 14px #b44cff;
+  animation:particleMove linear infinite;
+}
+
+@keyframes particleMove{
+  from{
+    transform:translateY(110vh);
+    opacity:0;
+  }
+  15%{opacity:.8}
+  85%{opacity:.8}
+  to{
+    transform:translateY(-20vh);
+    opacity:0;
+  }
+}
+
+/* APP */
+
+.app{
+  position:relative;
+  z-index:2;
+  width:min(950px,94%);
+  margin:auto;
+  padding:22px 0 60px;
+}
+
+/* HEADER */
+
+.header{
+  text-align:center;
+  margin-bottom:25px;
+  animation:fadeDown .8s ease;
+}
+
+.logo{
+  width:78px;
+  height:78px;
+  margin:auto;
+  display:grid;
+  place-items:center;
+  border-radius:25px;
+  font-size:31px;
+  font-weight:900;
+  background:linear-gradient(145deg,#762cff,#d65cff);
+  box-shadow:
+    0 0 20px rgba(157,65,255,.8),
+    0 0 65px rgba(157,65,255,.25);
+  animation:logoPulse 2.5s infinite;
+}
+
+.header h1{
+  margin-top:15px;
+  font-size:clamp(24px,6vw,40px);
+  text-shadow:0 0 20px rgba(192,100,255,.8);
+}
+
+.header p{
+  color:var(--muted);
+  margin-top:7px;
+}
+
+@keyframes logoPulse{
+  0%,100%{
+    box-shadow:0 0 18px rgba(157,65,255,.7);
+  }
+  50%{
+    box-shadow:
+      0 0 42px rgba(211,72,255,.95),
+      0 0 80px rgba(211,72,255,.25);
+  }
+}
+
+@keyframes fadeDown{
+  from{
+    opacity:0;
+    transform:translateY(-25px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(25px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* CARD */
+
+.card{
+  background:
+    linear-gradient(
+      145deg,
+      rgba(39,8,61,.94),
+      rgba(11,2,20,.92)
+    );
+  border:1px solid var(--border);
+  border-radius:25px;
+  padding:25px;
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.45),
+    inset 0 0 35px rgba(149,54,255,.04);
+  backdrop-filter:blur(18px);
+}
+
+/* START */
+
+#startScreen{
+  animation:fadeUp .8s ease;
+}
+
+.intro{
+  text-align:center;
+}
+
+.intro h2{
+  font-size:26px;
+  margin-bottom:10px;
+}
+
+.intro p{
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* IDENTITAS */
+
+.section-title{
+  margin-top:25px;
+  margin-bottom:14px;
+  color:#d99aff;
+  font-size:17px;
+  font-weight:900;
+  padding-bottom:10px;
+  border-bottom:1px solid rgba(190,90,255,.16);
+}
+
+.identity-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:13px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+
+.field.full{
+  grid-column:1/-1;
+}
+
+.field label{
+  font-size:12px;
+  color:#b99acb;
+  font-weight:800;
+}
+
+.input{
+  width:100%;
+  padding:15px 16px;
+  border-radius:14px;
+  outline:none;
+  border:1px solid var(--border);
+  background:rgba(0,0,0,.25);
+  color:#fff;
+  font-size:15px;
+  transition:.25s;
+}
+
+.input::placeholder{
+  color:#77667f;
+}
+
+.input:focus{
+  border-color:var(--purple2);
+  box-shadow:0 0 20px rgba(164,70,255,.22);
+}
+
+.start-button{
+  width:100%;
+  margin-top:22px;
+}
+
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-top:18px;
+}
+
+.info{
+  text-align:center;
+  padding:15px 8px;
+  border-radius:15px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.025);
+}
+
+.info strong{
+  display:block;
+  color:#d18cff;
+  font-size:20px;
+}
+
+.info span{
+  color:var(--muted);
+  font-size:11px;
+}
+
+/* BUTTON */
+
+.btn{
+  border:0;
+  outline:0;
+  cursor:pointer;
+  color:white;
+  padding:15px 20px;
+  border-radius:15px;
+  font-size:15px;
+  font-weight:900;
+  background:linear-gradient(135deg,#7d2cff,#c43fff);
+  box-shadow:0 0 22px rgba(164,58,255,.35);
+  transition:.25s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 0 35px rgba(194,65,255,.6);
+}
+
+.btn:active{
+  transform:scale(.97);
+}
+
+.btn.secondary{
+  background:rgba(255,255,255,.045);
+  border:1px solid var(--border);
+  box-shadow:none;
+}
+
+/* QUIZ */
+
+#quizScreen{
+  display:none;
+  animation:fadeUp .5s ease;
+}
+
+.quiz-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+  margin-bottom:15px;
+}
+
+.student{
+  color:#d9b7ff;
+  font-weight:800;
+}
+
+.timer{
+  min-width:100px;
+  text-align:center;
+  padding:10px 15px;
+  border-radius:12px;
+  background:rgba(255,0,120,.07);
+  border:1px solid rgba(255,92,190,.25);
+  color:#ff91d5;
+  font-weight:900;
+}
+
+.timer.warning{
+  color:#ff477e;
+  border-color:#ff477e;
+  animation:timerBlink .65s infinite alternate;
+}
+
+@keyframes timerBlink{
+  to{
+    box-shadow:0 0 25px rgba(255,40,90,.5);
+  }
+}
+
+.progress-info{
+  display:flex;
+  justify-content:space-between;
+  color:var(--muted);
+  font-size:12px;
+  margin-bottom:8px;
+}
+
+.progress-wrap{
+  height:8px;
+  background:rgba(255,255,255,.07);
+  border-radius:20px;
+  overflow:hidden;
+  margin-bottom:25px;
+}
+
+.progress{
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,#762cff,#ed58ff);
+  box-shadow:0 0 16px #a642ff;
+  transition:.45s;
+}
+
+/* SOAL */
+
+.type-badge{
+  display:inline-block;
+  padding:7px 11px;
+  border-radius:10px;
+  background:rgba(161,74,255,.12);
+  border:1px solid rgba(188,92,255,.2);
+  color:#d399ff;
+  font-size:12px;
+  font-weight:900;
+  margin-bottom:12px;
+}
+
+.question-number{
+  color:#c889ff;
+  font-size:14px;
+  font-weight:900;
+  margin-bottom:9px;
+}
+
+.question{
+  font-size:21px;
+  line-height:1.5;
+  margin-bottom:21px;
+}
+
+.options{
+  display:grid;
+  gap:12px;
+}
+
+.option{
+  position:relative;
+  padding:16px;
+  border-radius:16px;
+  border:1px solid rgba(190,100,255,.2);
+  background:rgba(255,255,255,.025);
+  cursor:pointer;
+  transition:.25s;
+}
+
+.option:hover{
+  transform:translateX(4px);
+  border-color:#a855f7;
+  background:rgba(164,65,255,.08);
+}
+
+.option.selected{
+  border-color:#c15cff;
+  background:linear-gradient(
+    90deg,
+    rgba(142,45,255,.25),
+    rgba(209,70,255,.1)
+  );
+  box-shadow:0 0 22px rgba(171,70,255,.18);
+}
+
+.option-letter{
+  display:inline-grid;
+  place-items:center;
+  width:33px;
+  height:33px;
+  border-radius:10px;
+  margin-right:10px;
+  background:rgba(168,76,255,.15);
+  color:#d39aff;
+  font-weight:900;
+}
+
+/* INPUT JAWABAN */
+
+.answer-input{
+  width:100%;
+  min-height:55px;
+  resize:vertical;
+  padding:16px;
+  border-radius:15px;
+  outline:none;
+  border:1px solid var(--border);
+  background:rgba(0,0,0,.25);
+  color:white;
+  font-size:16px;
+  font-family:inherit;
+  transition:.25s;
+}
+
+.answer-input:focus{
+  border-color:#c15cff;
+  box-shadow:0 0 20px rgba(171,70,255,.2);
+}
+
+.essay-input{
+  min-height:170px;
+}
+
+/* BUTTON SOAL */
+
+.quiz-buttons{
+  display:flex;
+  gap:12px;
+  margin-top:25px;
+}
+
+.quiz-buttons .btn{
+  flex:1;
+}
+
+#prevBtn:disabled{
+  opacity:.3;
+  cursor:not-allowed;
+  transform:none;
+}
+
+/* NOMOR SOAL */
+
+.question-nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-top:25px;
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,.07);
+}
+
+.nav-number{
+  width:31px;
+  height:31px;
+  display:grid;
+  place-items:center;
+  border-radius:9px;
+  font-size:10px;
+  font-weight:900;
+  cursor:pointer;
+  border:1px solid rgba(188,92,255,.16);
+  background:rgba(255,255,255,.025);
+  color:#9d8aa9;
+  transition:.2s;
+}
+
+.nav-number.current{
+  background:linear-gradient(135deg,#762cff,#c43fff);
+  color:white;
+  border-color:transparent;
+  box-shadow:0 0 12px rgba(170,70,255,.45);
+}
+
+.nav-number.answered{
+  color:#e1b6ff;
+  border-color:rgba(190,80,255,.5);
+}
+
+/* MODAL */
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:20;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(0,0,0,.7);
+  backdrop-filter:blur(8px);
+}
+
+.modal.show{
+  display:flex;
+}
+
+.modal-box{
+  width:min(500px,100%);
+  padding:25px;
+  border-radius:22px;
+  border:1px solid var(--border);
+  background:#150020;
+  box-shadow:0 0 60px rgba(166,57,255,.25);
+  animation:modalIn .3s ease;
+}
+
+.modal-box h3{
+  margin-bottom:10px;
+}
+
+.modal-box p{
+  color:var(--muted);
+  line-height:1.5;
+  margin-bottom:20px;
+}
+
+.modal-actions{
+  display:flex;
+  gap:10px;
+}
+
+.modal-actions button{
+  flex:1;
+}
+
+@keyframes modalIn{
+  from{
+    opacity:0;
+    transform:scale(.9) translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:scale(1) translateY(0);
+  }
+}
+
+/* RESULT */
+
+#resultScreen{
+  display:none;
+  animation:fadeUp .7s ease;
+}
+
+.result-header{
+  text-align:center;
+}
+
+.result-circle{
+  width:180px;
+  height:180px;
+  margin:5px auto 20px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:
+    radial-gradient(circle,#19002b 57%,transparent 58%),
+    conic-gradient(
+      #c04cff var(--score),
+      rgba(255,255,255,.08) 0
+    );
+  box-shadow:0 0 55px rgba(188,65,255,.3);
+}
+
+.score{
+  font-size:42px;
+  font-weight:900;
+  text-shadow:0 0 20px #c04cff;
+}
+
+.score small{
+  font-size:19px;
+}
+
+.result-title{
+  font-size:28px;
+  margin-bottom:7px;
+}
+
+.result-name{
+  color:#cba1e8;
+  margin-bottom:20px;
+}
+
+.identity-result{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-bottom:22px;
+}
+
+.identity-box{
+  padding:13px;
+  text-align:left;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.025);
+}
+
+.identity-box span{
+  display:block;
+  color:#8f7c99;
+  font-size:10px;
+  text-transform:uppercase;
+  margin-bottom:5px;
+}
+
+.identity-box strong{
+  color:#e3c6f2;
+  font-size:13px;
+  word-break:break-word;
+}
+
+.result-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+
+.result-box{
+  padding:17px 8px;
+  border-radius:16px;
+  background:rgba(255,255,255,.035);
+  border:1px solid var(--border);
+  text-align:center;
+}
+
+.result-box strong{
+  display:block;
+  font-size:23px;
+  color:#d293ff;
+}
+
+.result-box span{
+  color:var(--muted);
+  font-size:11px;
+}
+
+/* REKAP */
+
+.review{
+  margin-top:25px;
+}
+
+.review h3{
+  color:#d99aff;
+  margin-bottom:13px;
+}
+
+.review-list{
+  display:grid;
+  gap:9px;
+}
+
+.review-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  padding:13px;
+  border-radius:13px;
+  border:1px solid rgba(255,255,255,.06);
+  background:rgba(255,255,255,.025);
+}
+
+.review-left{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+.review-no{
+  width:30px;
+  height:30px;
+  display:grid;
+  place-items:center;
+  border-radius:9px;
+  background:rgba(150,60,255,.15);
+  color:#d49cff;
+  font-weight:900;
+  font-size:12px;
+}
+
+.status{
+  font-size:11px;
+  font-weight:900;
+  padding:6px 9px;
+  border-radius:8px;
+}
+
+.status.correct{
+  color:var(--green);
+  background:rgba(73,230,154,.1);
+}
+
+.status.wrong{
+  color:var(--red);
+  background:rgba(255,82,125,.1);
+}
+
+.status.empty{
+  color:var(--yellow);
+  background:rgba(255,211,92,.1);
+}
+
+/* KOREKSI URAIAN */
+
+.essay-review{
+  margin-top:25px;
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+.essay-review h3{
+  color:#d99aff;
+  margin-bottom:7px;
+}
+
+.essay-review-info{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.5;
+  margin-bottom:15px;
+}
+
+.essay-card{
+  padding:16px;
+  border-radius:16px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.025);
+  margin-bottom:12px;
+}
+
+.essay-question{
+  font-weight:800;
+  line-height:1.5;
+  margin-bottom:10px;
+}
+
+.student-answer{
+  padding:12px;
+  border-radius:11px;
+  background:rgba(0,0,0,.2);
+  color:#cdbbd8;
+  font-size:13px;
+  line-height:1.5;
+  margin-bottom:12px;
+  white-space:pre-wrap;
+}
+
+.score-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.score-row label{
+  color:#b99acb;
+  font-size:12px;
+  font-weight:800;
+}
+
+.essay-score{
+  width:90px;
+  padding:10px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:#0d0015;
+  color:#fff;
+  outline:none;
+  text-align:center;
+  font-weight:900;
+}
+
+.essay-score:focus{
+  border-color:#c15cff;
+  box-shadow:0 0 15px rgba(171,70,255,.2);
+}
+
+.essay-max{
+  color:#8f7c99;
+  font-size:12px;
+}
+
+.calculate-box{
+  margin-top:18px;
+  padding:18px;
+  border-radius:16px;
+  border:1px solid rgba(190,90,255,.25);
+  background:rgba(145,55,255,.06);
+}
+
+.calculate-row{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  margin:8px 0;
+  color:#cbb6d6;
+}
+
+.calculate-row.total{
+  margin-top:14px;
+  padding-top:14px;
+  border-top:1px solid rgba(255,255,255,.1);
+  color:#fff;
+  font-weight:900;
+  font-size:17px;
+}
+
+/* FOOTER */
+
+.footer{
+  text-align:center;
+  color:#705d79;
+  font-size:11px;
+  margin-top:20px;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+  .app{
+    width:94%;
+    padding-top:14px;
+  }
+
+  .card{
+    padding:18px;
+    border-radius:20px;
+  }
+
+  .identity-grid{
+    grid-template-columns:1fr;
+  }
+
+  .field.full{
+    grid-column:auto;
+  }
+
+  .info-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .quiz-top{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .timer{
+    width:100%;
+  }
+
+  .question{
+    font-size:19px;
+  }
+
+  .quiz-buttons{
+    flex-direction:column;
+  }
+
+  .result-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .identity-result{
+    grid-template-columns:1fr;
+  }
+
+  .review-item{
+    align-items:flex-start;
+  }
+
+  .score-row{
+    flex-wrap:wrap;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg-orb orb1"></div>
+<div class="bg-orb orb2"></div>
+<div class="bg-orb orb3"></div>
+<div id="particles"></div>
+
+<main class="app">
+
+<header class="header">
+  <div class="logo">J</div>
+  <h1>ULANGAN BAHASA JAWA</h1>
+  <p>Kelas 6 • 35 Soal • Sistem Koreksi</p>
+</header>
+
+
+<!-- =====================================================
+     FORM IDENTITAS
+===================================================== -->
+
+<section id="startScreen" class="card">
+
+  <div class="intro">
+    <h2>Identitas Peserta Ulangan</h2>
+
+    <p>
+      Lengkapi data siswa sadurunge miwiti ulangan.
+      Priksa maneh supaya data ora salah.
+    </p>
+  </div>
+
+
+  <div class="section-title">
+    DATA SISWA
+  </div>
+
+  <div class="identity-grid">
+
+    <div class="field full">
+      <label>Nama Lengkap</label>
+      <input
+        id="nameInput"
+        class="input"
+        type="text"
+        placeholder="Tuliskan nama lengkap"
+        autocomplete="off"
+      >
+    </div>
+
+    <div class="field">
+      <label>Kelas</label>
+      <input
+        id="classInput"
+        class="input"
+        type="text"
+        placeholder="Contoh: 6A"
+        autocomplete="off"
+      >
+    </div>
+
+    <div class="field">
+      <label>Nomor Absen</label>
+      <input
+        id="absenInput"
+        class="input"
+        type="number"
+        placeholder="Contoh: 12"
+        min="1"
+      >
+    </div>
+
+  </div>
+
+
+  <div class="section-title">
+    ASAL SEKOLAH
+  </div>
+
+  <div class="identity-grid">
+
+    <div class="field full">
+      <label>Nama Sekolah</label>
+      <input
+        id="schoolInput"
+        class="input"
+        type="text"
+        placeholder="Contoh: SDN Petarangan"
+        autocomplete="off"
+      >
+    </div>
+
+    <div class="field">
+      <label>Desa / Kelurahan</label>
+      <input
+        id="villageInput"
+        class="input"
+        type="text"
+        placeholder="Nama desa / kelurahan"
+        autocomplete="off"
+      >
+    </div>
+
+    <div class="field">
+      <label>Kecamatan</label>
+      <input
+        id="districtInput"
+        class="input"
+        type="text"
+        placeholder="Nama kecamatan"
+        autocomplete="off"
+      >
+    </div>
+
+    <div class="field">
+      <label>Kabupaten / Kota</label>
+      <input
+        id="regencyInput"
+        class="input"
+        type="text"
+        placeholder="Nama kabupaten / kota"
+        autocomplete="off"
+      >
+    </div>
+
+    <div class="field">
+      <label>Provinsi</label>
+      <input
+        id="provinceInput"
+        class="input"
+        type="text"
+        placeholder="Nama provinsi"
+        autocomplete="off"
+      >
+    </div>
+
+  </div>
+
+
+  <button
+    class="btn start-button"
+    onclick="startQuiz()">
+    MULAI ULANGAN
+  </button>
+
+
+  <div class="info-grid">
+
+    <div class="info">
+      <strong>20</strong>
+      <span>Pilihan Ganda</span>
+    </div>
+
+    <div class="info">
+      <strong>10</strong>
+      <span>Isian</span>
+    </div>
+
+    <div class="info">
+      <strong>5</strong>
+      <span>Uraian</span>
+    </div>
+
+    <div class="info">
+      <strong>45</strong>
+      <span>Menit</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     QUIZ
+===================================================== -->
+
+<section id="quizScreen" class="card">
+
+  <div class="quiz-top">
+
+    <div class="student">
+      <span id="studentName">Siswa</span>
+      •
+      <span id="studentClass">6</span>
+    </div>
+
+    <div id="timer" class="timer">
+      45:00
+    </div>
+
+  </div>
+
+
+  <div class="progress-info">
+    <span id="progressText">
+      Soal 1 dari 35
+    </span>
+
+    <span id="answeredText">
+      0 dijawab
+    </span>
+  </div>
+
+
+  <div class="progress-wrap">
+    <div id="progress" class="progress"></div>
+  </div>
+
+
+  <div id="typeBadge" class="type-badge">
+    PILIHAN GANDA
+  </div>
+
+
+  <div
+    id="questionNumber"
+    class="question-number">
+    SOAL 1 / 35
+  </div>
+
+
+  <div
+    id="question"
+    class="question">
+  </div>
+
+
+  <div id="answerArea"></div>
+
+
+  <div class="quiz-buttons">
+
+    <button
+      id="prevBtn"
+      class="btn secondary"
+      onclick="previousQuestion()">
+      SEBELUMNYA
+    </button>
+
+    <button
+      id="nextBtn"
+      class="btn"
+      onclick="nextQuestion()">
+      BERIKUTNYA
+    </button>
+
+  </div>
+
+
+  <div
+    id="questionNav"
+    class="question-nav">
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     HASIL
+===================================================== -->
+
+<section id="resultScreen" class="card">
+
+  <div class="result-header">
+
+    <div
+      id="resultCircle"
+      class="result-circle"
+      style="--score:0deg">
+
+      <div class="score">
+        <span id="score">0</span>
+        <small>/100</small>
+      </div>
+
+    </div>
+
+    <h2 class="result-title">
+      Ulangan Rampung
+    </h2>
+
+    <p class="result-name">
+      <span id="resultName"></span>
+    </p>
+
+  </div>
+
+
+  <!-- IDENTITAS HASIL -->
+
+  <div class="identity-result">
+
+    <div class="identity-box">
+      <span>Nama</span>
+      <strong id="rName">-</strong>
+    </div>
+
+    <div class="identity-box">
+      <span>Kelas</span>
+      <strong id="rClass">-</strong>
+    </div>
+
+    <div class="identity-box">
+      <span>Nomor Absen</span>
+      <strong id="rAbsen">-</strong>
+    </div>
+
+    <div class="identity-box">
+      <span>Sekolah</span>
+      <strong id="rSchool">-</strong>
+    </div>
+
+    <div class="identity-box">
+      <span>Desa / Kelurahan</span>
+      <strong id="rVillage">-</strong>
+    </div>
+
+    <div class="identity-box">
+      <span>Kecamatan</span>
+      <strong id="rDistrict">-</strong>
+    </div>
+
+    <div class="identity-box">
+      <span>Kabupaten / Kota</span>
+      <strong id="rRegency">-</strong>
+    </div>
+
+    <div class="identity-box">
+      <span>Provinsi</span>
+      <strong id="rProvince">-</strong>
+    </div>
+
+  </div>
+
+
+  <!-- STATISTIK -->
+
+  <div class="result-grid">
+
+    <div class="result-box">
+      <strong id="correct">0</strong>
+      <span>Benar</span>
+    </div>
+
+    <div class="result-box">
+      <strong id="wrong">0</strong>
+      <span>Salah</span>
+    </div>
+
+    <div class="result-box">
+      <strong id="empty">0</strong>
+      <span>Kosong</span>
+    </div>
+
+    <div class="result-box">
+      <strong>5</strong>
+      <span>Uraian</span>
+    </div>
+
+  </div>
+
+
+  <!-- REKAP KOREKSI -->
+
+  <div class="review">
+
+    <h3>Rekap Koreksi Otomatis</h3>
+
+    <div
+      id="reviewList"
+      class="review-list">
+    </div>
+
+  </div>
+
+
+  <!-- KOREKSI URAIAN -->
+
+  <div class="essay-review">
+
+    <h3>Koreksi Uraian Guru</h3>
+
+    <div class="essay-review-info">
+      Saben soal uraian nduweni nilai maksimal
+      <b>5 poin</b>. Masukkan nilai 0–5 kanggo saben
+      jawaban. Sawise kabeh diisi, sistem bakal
+      ngetung nilai akhir.
+    </div>
+
+    <div id="essayReviewList"></div>
+
+
+    <div class="calculate-box">
+
+      <div class="calculate-row">
+        <span>Nilai PG + Isian</span>
+        <strong id="autoScoreText">0</strong>
+      </div>
+
+      <div class="calculate-row">
+        <span>Total poin uraian</span>
+        <strong id="essayScoreText">0 / 25</strong>
+      </div>
+
+      <div class="calculate-row total">
+        <span>Nilai Akhir</span>
+        <strong id="finalScoreText">0 / 100</strong>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <button
+    class="btn"
+    style="width:100%;margin-top:22px"
+    onclick="window.print()">
+    CETAK / SIMPAN HASIL
+  </button>
+
+
+  <button
+    class="btn secondary"
+    style="width:100%;margin-top:10px"
+    onclick="location.reload()">
+    ULANGI ULANGAN
+  </button>
+
+
+  <div class="footer">
+    Sistem Ulangan Bahasa Jawa Kelas 6
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- MODAL SELESAI -->
+
+<div
+  id="finishModal"
+  class="modal">
+
+  <div class="modal-box">
+
+    <h3>Rampungake Ulangan?</h3>
+
+    <p>
+      Pasthekake kabeh jawaban wis diisi.
+      Sawise dikumpulake, jawaban ora bisa diowahi maneh.
+    </p>
+
+    <div class="modal-actions">
+
+      <button
+        class="btn secondary"
+        onclick="closeModal()">
+        BATAL
+      </button>
+
+      <button
+        class="btn"
+        onclick="confirmFinish()">
+        KUMPULKAN
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   PARTICLES
+===================================================== */
+
+const particleContainer =
+  document.getElementById("particles");
+
+for(let i=0;i<45;i++){
+
+  const particle=
+    document.createElement("div");
+
+  particle.className="particle";
+
+  particle.style.left=
+    Math.random()*100+"%";
+
+  particle.style.animationDuration=
+    (5+Math.random()*10)+"s";
+
+  particle.style.animationDelay=
+    (-Math.random()*12)+"s";
+
+  particle.style.opacity=
+    (.2+Math.random()*.7);
+
+  particleContainer.appendChild(particle);
+}
+
+
+/* =====================================================
+   SOAL
+===================================================== */
+
+const questions=[
+
+/* 1-20 PILIHAN GANDA */
+
+{
+ type:"pg",
+ q:"Tembung 'mangan' yen digunakake marang wong sing luwih tuwa kanthi basa krama yaiku ...",
+ a:["nedha","dhahar","maem","mangan"],
+ c:1
+},
+
+{
+ type:"pg",
+ q:"Basa krama saka tembung 'turu' yaiku ...",
+ a:["tilem","sare","golek","lungguh"],
+ c:1
+},
+
+{
+ type:"pg",
+ q:"'Aku arep menyang sekolah.' Yen diowahi dadi basa krama yaiku ...",
+ a:[
+  "Kula badhe kesah sekolah.",
+  "Aku badhe menyang sekolah.",
+  "Kula arep menyang sekolah.",
+  "Kula lunga sekolah."
+ ],
+ c:0
+},
+
+{
+ type:"pg",
+ q:"Tembung 'omah' ing basa krama yaiku ...",
+ a:["dalem","griya","papan","wisma"],
+ c:1
+},
+
+{
+ type:"pg",
+ q:"Unggah-ungguh basa digunakake kanggo ...",
+ a:[
+  "ngurmati wong liya",
+  "nggawe ukara luwih dawa",
+  "ngguyu karo kanca",
+  "dolanan"
+ ],
+ c:0
+},
+
+{
+ type:"pg",
+ q:"Kosok balene tembung 'gedhe' yaiku ...",
+ a:["dawa","cilik","dhuwur","abot"],
+ c:1
+},
+
+{
+ type:"pg",
+ q:"Tembung 'abang' kalebu jeneng ...",
+ a:["warna","kewan","panganan","anggota awak"],
+ c:0
+},
+
+{
+ type:"pg",
+ q:"'Bapak tindak kantor.' Tembung 'tindak' tegese ...",
+ a:["mangan","lunga","turu","ngombe"],
+ c:1
+},
+
+{
+ type:"pg",
+ q:"Wacan kang nyritakake sawijining kedadeyan kanthi runtut diarani ...",
+ a:["cerita","iklan","tembang","parikan"],
+ c:0
+},
+
+{
+ type:"pg",
+ q:"Parikan biasane nduweni ...",
+ a:[
+  "sampiran lan isi",
+  "judul lan daftar pustaka",
+  "tokoh lan latar",
+  "pambuka lan panutup"
+ ],
+ c:0
+},
+
+{
+ type:"pg",
+ q:"Tembang macapat nduweni aturan guru ...",
+ a:["warna","wilangan lan lagu","omah","pangan"],
+ c:1
+},
+
+{
+ type:"pg",
+ q:"Guru wilangan yaiku ...",
+ a:[
+  "cacahing wanda saben gatra",
+  "cacahing tembung saben ukara",
+  "cacahing paragraf",
+  "cacahing aksara"
+ ],
+ c:0
+},
+
+{
+ type:"pg",
+ q:"Aksara Jawa 'ꦲ' diwaca ...",
+ a:["ha","na","ca","ra"],
+ c:0
+},
+
+{
+ type:"pg",
+ q:"Aksara Jawa 'ꦤ' diwaca ...",
+ a:["ha","na","ca","ra"],
+ c:1
+},
+
+{
+ type:"pg",
+ q:"Tembung 'sekolah' yen ditulis nganggo aksara Jawa diwiwiti aksara ...",
+ a:["ꦱ","ꦏ","ꦭ","ꦲ"],
+ c:0
+},
+
+{
+ type:"pg",
+ q:"'Sugeng enjing' tegese ...",
+ a:[
+  "selamat pagi",
+  "selamat malam",
+  "selamat sore",
+  "selamat siang"
+ ],
+ c:0
+},
+
+{
+ type:"pg",
+ q:"Nalika ngomong karo guru, becike nggunakake basa ...",
+ a:["ngoko","krama","kasar","campuran sembarangan"],
+ c:1
+},
+
+{
+ type:"pg",
+ q:"Tembung 'nyuwun' nduweni teges ...",
+ a:["meminta","mangan","mlaku","ndeleng"],
+ c:0
+},
+
+{
+ type:"pg",
+ q:"'Matur nuwun' digunakake nalika ...",
+ a:[
+  "matur nuwun / berterima kasih",
+  "nesu",
+  "turu",
+  "takon"
+ ],
+ c:0
+},
+
+{
+ type:"pg",
+ q:"Ukara 'Kula nyuwun pangapunten' tegese ...",
+ a:[
+  "Saya meminta maaf",
+  "Saya sedang makan",
+  "Saya mau pergi",
+  "Saya sedang belajar"
+ ],
+ c:0
+},
+
+
+/* 21-30 ISIAN */
+
+{
+ type:"isian",
+ q:"Basa krama saka tembung 'mangan' yaiku ...",
+ answers:["dhahar"]
+},
+
+{
+ type:"isian",
+ q:"Basa krama saka tembung 'turu' yaiku ...",
+ answers:["sare","tilem"]
+},
+
+{
+ type:"isian",
+ q:"Kosok balene tembung 'adoh' yaiku ...",
+ answers:["cedhak"]
+},
+
+{
+ type:"isian",
+ q:"Tembung 'matur nuwun' tegese ...",
+ answers:["terima kasih","berterima kasih"]
+},
+
+{
+ type:"isian",
+ q:"Tembung 'nyuwun pangapunten' tegese ...",
+ answers:["meminta maaf","minta maaf"]
+},
+
+{
+ type:"isian",
+ q:"Basa Jawa kanggo 'rumah' yaiku ...",
+ answers:["omah","griya"]
+},
+
+{
+ type:"isian",
+ q:"Basa Jawa kanggo 'mata' yaiku ...",
+ answers:["mripat"]
+},
+
+{
+ type:"isian",
+ q:"Basa Jawa kanggo 'telinga' yaiku ...",
+ answers:["kuping"]
+},
+
+{
+ type:"isian",
+ q:"Tembung kosok balen saka 'dhuwur' yaiku ...",
+ answers:["cendhek","rendah"]
+},
+
+{
+ type:"isian",
+ q:"Parikan dumadi saka sampiran lan ...",
+ answers:["isi"]
+},
+
+
+/* 31-35 URAIAN */
+
+{
+ type:"uraian",
+ q:"Jlentrehna apa sing diarani unggah-ungguh basa lan apa gunane!",
+ answers:[]
+},
+
+{
+ type:"uraian",
+ q:"Gawea ukara nganggo basa krama sing digunakake nalika ngomong karo guru!",
+ answers:[]
+},
+
+{
+ type:"uraian",
+ q:"Sebutna telung tuladha tembung ngoko lan basa kramane!",
+ answers:[]
+},
+
+{
+ type:"uraian",
+ q:"Apa bedane basa ngoko lan basa krama? Jlentrehna nganggo ukaramu dhewe!",
+ answers:[]
+},
+
+{
+ type:"uraian",
+ q:"Gawea parikan prasaja nganggo basa Jawa lan tulisen isi utawa maksude!",
+ answers:[]
+}
+
+];
+
+
+/* =====================================================
+   DATA
+===================================================== */
+
+let current=0;
+
+let answers=
+  new Array(questions.length).fill(null);
+
+let timeLeft=45*60;
+
+let timerInterval=null;
+
+let finishRequested=false;
+
+let identity={};
+
+
+/* =====================================================
+   START
+===================================================== */
+
+function getValue(id){
+  return document.getElementById(id).value.trim();
+}
+
+
+function startQuiz(){
+
+  identity={
+    name:getValue("nameInput"),
+    kelas:getValue("classInput"),
+    absen:getValue("absenInput"),
+    school:getValue("schoolInput"),
+    village:getValue("villageInput"),
+    district:getValue("districtInput"),
+    regency:getValue("regencyInput"),
+    province:getValue("provinceInput")
+  };
+
+
+  if(!identity.name){
+    alert("Nama lengkap kudu diisi.");
+    return;
+  }
+
+  if(!identity.kelas){
+    alert("Kelas kudu diisi.");
+    return;
+  }
+
+  if(!identity.absen){
+    alert("Nomor absen kudu diisi.");
+    return;
+  }
+
+  if(!identity.school){
+    alert("Nama sekolah kudu diisi.");
+    return;
+  }
+
+  if(!identity.village){
+    alert("Desa / kelurahan kudu diisi.");
+    return;
+  }
+
+  if(!identity.district){
+    alert("Kecamatan kudu diisi.");
+    return;
+  }
+
+  if(!identity.regency){
+    alert("Kabupaten / kota kudu diisi.");
+    return;
+  }
+
+  if(!identity.province){
+    alert("Provinsi kudu diisi.");
+    return;
+  }
+
+
+  document.getElementById("studentName")
+    .textContent=identity.name;
+
+  document.getElementById("studentClass")
+    .textContent=identity.kelas;
+
+
+  document.getElementById("startScreen")
+    .style.display="none";
+
+  document.getElementById("quizScreen")
+    .style.display="block";
+
+
+  createQuestionNav();
+
+  renderQuestion();
+
+  timerInterval=
+    setInterval(updateTimer,1000);
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
+
+
+/* =====================================================
+   RENDER
+===================================================== */
+
+function renderQuestion(){
+
+  const item=questions[current];
+
+  document.getElementById("questionNumber")
+    .textContent=
+      `SOAL ${current+1} / ${questions.length}`;
+
+  document.getElementById("progressText")
+    .textContent=
+      `Soal ${current+1} dari ${questions.length}`;
+
+  document.getElementById("question")
+    .textContent=item.q;
+
+
+  const badge=
+    document.getElementById("typeBadge");
+
+
+  if(item.type==="pg")
+    badge.textContent="PILIHAN GANDA";
+
+  if(item.type==="isian")
+    badge.textContent="ISIAN";
+
+  if(item.type==="uraian")
+    badge.textContent="URAIAN";
+
+
+  const area=
+    document.getElementById("answerArea");
+
+  area.innerHTML="";
+
+
+  /* PG */
+
+  if(item.type==="pg"){
+
+    const options=
+      document.createElement("div");
+
+    options.className="options";
+
+
+    item.a.forEach((answer,index)=>{
+
+      const option=
+        document.createElement("div");
+
+      option.className="option";
+
+      if(answers[current]===index){
+        option.classList.add("selected");
+      }
+
+
+      option.innerHTML=`
+        <span class="option-letter">
+          ${String.fromCharCode(65+index)}
+        </span>
+        <span>${answer}</span>
+      `;
+
+
+      option.onclick=()=>{
+
+        answers[current]=index;
+
+        document
+          .querySelectorAll(".option")
+          .forEach(el=>{
+            el.classList.remove("selected");
+          });
+
+        option.classList.add("selected");
+
+        updateQuestionNav();
+        updateAnsweredText();
+      };
+
+
+      options.appendChild(option);
+
+    });
+
+
+    area.appendChild(options);
+  }
+
+
+  /* ISIAN */
+
+  if(item.type==="isian"){
+
+    const input=
+      document.createElement("input");
+
+    input.type="text";
+
+    input.className="answer-input";
+
+    input.placeholder=
+      "Tulisen jawabanmu ing kene...";
+
+    input.value=
+      answers[current] || "";
+
+    input.autocomplete="off";
+
+
+    input.oninput=()=>{
+
+      answers[current]=input.value;
+
+      updateQuestionNav();
+      updateAnsweredText();
+    };
+
+
+    area.appendChild(input);
+  }
+
+
+  /* URAIAN */
+
+  if(item.type==="uraian"){
+
+    const textarea=
+      document.createElement("textarea");
+
+    textarea.className=
+      "answer-input essay-input";
+
+    textarea.placeholder=
+      "Tulisen jawabanmu kanthi jelas...";
+
+    textarea.value=
+      answers[current] || "";
+
+
+    textarea.oninput=()=>{
+
+      answers[current]=textarea.value;
+
+      updateQuestionNav();
+      updateAnsweredText();
+    };
+
+
+    area.appendChild(textarea);
+  }
+
+
+  const percent=
+    ((current+1)/questions.length)*100;
+
+  document.getElementById("progress")
+    .style.width=percent+"%";
+
+
+  document.getElementById("prevBtn")
+    .disabled=current===0;
+
+
+  document.getElementById("nextBtn")
+    .textContent=
+      current===questions.length-1
+      ? "SELESAI"
+      : "BERIKUTNYA";
+
+
+  updateQuestionNav();
+  updateAnsweredText();
+}
+
+
+/* =====================================================
+   NAV SOAL
+===================================================== */
+
+function createQuestionNav(){
+
+  const nav=
+    document.getElementById("questionNav");
+
+  nav.innerHTML="";
+
+
+  questions.forEach((_,index)=>{
+
+    const button=
+      document.createElement("div");
+
+    button.className="nav-number";
+
+    button.textContent=index+1;
+
+
+    button.onclick=()=>{
+
+      current=index;
+
+      animateQuestion();
+    };
+
+
+    nav.appendChild(button);
+  });
+
+
+  updateQuestionNav();
+}
+
+
+function updateQuestionNav(){
+
+  document
+    .querySelectorAll(".nav-number")
+    .forEach((button,index)=>{
+
+      button.classList.remove(
+        "current",
+        "answered"
+      );
+
+
+      if(index===current){
+        button.classList.add("current");
+      }
+
+
+      if(
+        answers[index]!==null &&
+        String(answers[index]).trim()!==""
+      ){
+        button.classList.add("answered");
+      }
+
+    });
+}
+
+
+function updateAnsweredText(){
+
+  const count=
+    answers.filter(answer=>
+      answer!==null &&
+      String(answer).trim()!==""
+    ).length;
+
+
+  document.getElementById("answeredText")
+    .textContent=
+      `${count} dijawab`;
+}
+
+
+/* =====================================================
+   NAVIGASI
+===================================================== */
+
+function nextQuestion(){
+
+  if(current===questions.length-1){
+
+    openFinishModal();
+
+    return;
+  }
+
+  current++;
+
+  animateQuestion();
+}
+
+
+function previousQuestion(){
+
+  if(current===0)return;
+
+  current--;
+
+  animateQuestion();
+}
+
+
+function animateQuestion(){
+
+  const quiz=
+    document.getElementById("quizScreen");
+
+  quiz.style.animation="none";
+
+  void quiz.offsetWidth;
+
+  quiz.style.animation=
+    "fadeUp .35s ease";
+
+  renderQuestion();
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
+
+
+/* =====================================================
+   TIMER
+===================================================== */
+
+function updateTimer(){
+
+  timeLeft--;
+
+
+  if(timeLeft<=0){
+
+    timeLeft=0;
+
+    clearInterval(timerInterval);
+
+    autoFinish();
+
+    return;
+  }
+
+
+  const min=
+    Math.floor(timeLeft/60)
+      .toString()
+      .padStart(2,"0");
+
+  const sec=
+    (timeLeft%60)
+      .toString()
+      .padStart(2,"0");
+
+
+  const timer=
+    document.getElementById("timer");
+
+  timer.textContent=
+    `${min}:${sec}`;
+
+
+  if(timeLeft<=60){
+
+    timer.classList.add("warning");
+  }
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+function openFinishModal(){
+
+  document
+    .getElementById("finishModal")
+    .classList.add("show");
+}
+
+
+function closeModal(){
+
+  document
+    .getElementById("finishModal")
+    .classList.remove("show");
+}
+
+
+function confirmFinish(){
+
+  closeModal();
+
+  finishQuiz();
+}
+
+
+function autoFinish(){
+
+  alert(
+    "Wektu ulangan wis entek. Jawaban bakal dikumpulake otomatis."
+  );
+
+  finishQuiz();
+}
+
+
+/* =====================================================
+   NORMALIZE ISIAN
+===================================================== */
+
+function normalizeText(text){
+
+  return String(text)
+    .toLowerCase()
+    .trim()
+    .replace(/[.,!?;:]/g,"")
+    .replace(/\s+/g," ");
+}
+
+
+function checkIsian(item,userAnswer){
+
+  const answer=
+    normalizeText(userAnswer);
+
+
+  if(!answer)return false;
+
+
+  return item.answers.some(correct=>
+    normalizeText(correct)===answer
+  );
+}
+
+
+/* =====================================================
+   FINISH
+===================================================== */
+
+function finishQuiz(){
+
+  if(finishRequested)return;
+
+  finishRequested=true;
+
+  clearInterval(timerInterval);
+
+
+  let correct=0;
+  let wrong=0;
+  let empty=0;
+
+
+  questions.forEach((item,index)=>{
+
+    const answer=answers[index];
+
+
+    if(item.type==="pg"){
+
+      if(answer===null){
+        empty++;
+      }
+      else if(answer===item.c){
+        correct++;
+      }
+      else{
+        wrong++;
+      }
+    }
+
+
+    if(item.type==="isian"){
+
+      if(
+        answer===null ||
+        String(answer).trim()===""
+      ){
+        empty++;
+      }
+      else if(checkIsian(item,answer)){
+        correct++;
+      }
+      else{
+        wrong++;
+      }
+    }
+
+
+    if(item.type==="uraian"){
+
+      if(
+        answer===null ||
+        String(answer).trim()===""
+      ){
+        empty++;
+      }
+    }
+
+  });
+
+
+  const autoTotal=30;
+
+  const autoScore=
+    Math.round((correct/autoTotal)*100);
+
+
+  document.getElementById("quizScreen")
+    .style.display="none";
+
+  document.getElementById("resultScreen")
+    .style.display="block";
+
+
+  /* IDENTITAS */
+
+  document.getElementById("resultName")
+    .textContent=identity.name;
+
+  document.getElementById("rName")
+    .textContent=identity.name;
+
+  document.getElementById("rClass")
+    .textContent=identity.kelas;
+
+  document.getElementById("rAbsen")
+    .textContent=identity.absen;
+
+  document.getElementById("rSchool")
+    .textContent=identity.school;
+
+  document.getElementById("rVillage")
+    .textContent=identity.village;
+
+  document.getElementById("rDistrict")
+    .textContent=identity.district;
+
+  document.getElementById("rRegency")
+    .textContent=identity.regency;
+
+  document.getElementById("rProvince")
+    .textContent=identity.province;
+
+
+  /* NILAI AWAL */
+
+  document.getElementById("score")
+    .textContent=autoScore;
+
+
+  document.getElementById("correct")
+    .textContent=correct;
+
+  document.getElementById("wrong")
+    .textContent=wrong;
+
+  document.getElementById("empty")
+    .textContent=empty;
+
+
+  document.getElementById("resultCircle")
+    .style.setProperty(
+      "--score",
+      (autoScore*3.6)+"deg"
+    );
+
+
+  document.getElementById("autoScoreText")
+    .textContent=autoScore;
+
+
+  createReview(
+    correct,
+    wrong,
+    empty
+  );
+
+  createEssayReview();
+
+  calculateFinal();
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
+
+
+/* =====================================================
+   REKAP KOREKSI
+===================================================== */
+
+function createReview(){
+
+  const list=
+    document.getElementById("reviewList");
+
+  list.innerHTML="";
+
+
+  questions.forEach((item,index)=>{
+
+    if(item.type==="uraian")return;
+
+
+    const answer=answers[index];
+
+    let status="";
+    let className="";
+
+
+    if(answer===null ||
+       String(answer).trim()===""){
+
+      status="KOSONG";
+      className="empty";
+
+    }
+    else if(
+      item.type==="pg" &&
+      answer===item.c
+    ){
+
+      status="BENAR";
+      className="correct";
+
+    }
+    else if(
+      item.type==="isian" &&
+      checkIsian(item,answer)
+    ){
+
+      status="BENAR";
+      className="correct";
+
+    }
+    else{
+
+      status="SALAH";
+      className="wrong";
+    }
+
+
+    const row=
+      document.createElement("div");
+
+    row.className="review-item";
+
+
+    row.innerHTML=`
+
+      <div class="review-left">
+
+        <div class="review-no">
+          ${index+1}
+        </div>
+
+        <div>
+          ${item.type==="pg"
+            ?"Pilihan Ganda"
+            :"Isian"}
+        </div>
+
+      </div>
+
+      <div class="status ${className}">
+        ${status}
+      </div>
+
+    `;
+
+
+    list.appendChild(row);
+
+  });
+}
+
+
+/* =====================================================
+   KOREKSI URAIAN
+===================================================== */
+
+function createEssayReview(){
+
+  const container=
+    document.getElementById("essayReviewList");
+
+  container.innerHTML="";
+
+
+  questions.forEach((item,index)=>{
+
+    if(item.type!=="uraian")return;
+
+
+    const card=
+      document.createElement("div");
+
+    card.className="essay-card";
+
+
+    const answer=
+      answers[index] &&
+      String(answers[index]).trim()
+      ? answers[index]
+      : "Belum ada jawaban.";
+
+
+    card.innerHTML=`
+
+      <div class="essay-question">
+        ${index+1}. ${item.q}
+      </div>
+
+      <div class="student-answer">
+        ${escapeHTML(answer)}
+      </div>
+
+      <div class="score-row">
+
+        <label>Nilai:</label>
+
+        <input
+          class="essay-score"
+          type="number"
+          min="0"
+          max="5"
+          value="0"
+          data-index="${index}"
+          oninput="calculateFinal()"
+        >
+
+        <span class="essay-max">
+          / 5 poin
+        </span>
+
+      </div>
+
+    `;
+
+
+    container.appendChild(card);
+  });
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(value){
+
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
+
+/* =====================================================
+   HITUNG NILAI AKHIR
+===================================================== */
+
+function calculateFinal(){
+
+  let correct=0;
+
+
+  questions.forEach((item,index)=>{
+
+    if(item.type==="pg"){
+
+      if(answers[index]===item.c){
+        correct++;
+      }
+    }
+
+
+    if(item.type==="isian"){
+
+      if(
+        answers[index]!==null &&
+        checkIsian(
+          item,
+          answers[index]
+        )
+      ){
+        correct++;
+      }
+    }
+
+  });
+
+
+  /*
+
+    30 soal otomatis:
+    1 soal = 1 poin.
+
+    Maksimum otomatis = 30 poin.
+
+    5 uraian:
+    masing-masing maksimal 5 poin.
+
+    Maksimum uraian = 25 poin.
+
+    Total maksimum = 55 poin.
+
+    Nilai akhir = poin diperoleh / 55 x 100.
+
+  */
+
+
+  let essayPoints=0;
+
+
+  document
+    .querySelectorAll(".essay-score")
+    .forEach(input=>{
+
+      let value=
+        Number(input.value);
+
+      if(isNaN(value))value=0;
+
+      if(value<0)value=0;
+
+      if(value>5)value=5;
+
+      input.value=value;
+
+      essayPoints+=value;
+    });
+
+
+  const totalPoints=
+    correct+essayPoints;
+
+
+  const finalScore=
+    Math.round(
+      (totalPoints/55)*100
+    );
+
+
+  document.getElementById("autoScoreText")
+    .textContent=
+      `${correct} / 30`;
+
+
+  document.getElementById("essayScoreText")
+    .textContent=
+      `${essayPoints} / 25`;
+
+
+  document.getElementById("finalScoreText")
+    .textContent=
+      `${finalScore} / 100`;
+
+
+  document.getElementById("score")
+    .textContent=finalScore;
+
+
+  document.getElementById("resultCircle")
+    .style.setProperty(
+      "--score",
+      (finalScore*3.6)+"deg"
+    );
+}
+
+
+/* =====================================================
+   KEYBOARD
+===================================================== */
+
+document.addEventListener(
+  "keydown",
+  event=>{
+
+    if(
+      document
+        .getElementById("quizScreen")
+        .style.display!=="block"
+    ){
+      return;
+    }
+
+
+    if(event.key==="ArrowRight"){
+      nextQuestion();
+    }
+
+
+    if(event.key==="ArrowLeft"){
+      previousQuestion();
+    }
+
+  }
+);
+
+</script>
+
+</body>
+  </html>
